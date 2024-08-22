@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Images Webpage</title>
+    <style>
+        /* Style to display images side by side */
+        .image-container {
+            display: flex; /* Use flexbox layout */
+            align-items: center; /* Center items vertically */
+            margin-left: 580px;
+            margin-top: 100px;
+        }
+        .image-container img {
+            margin-right: 20px; 
+            border: 5px solid rgb(24, 84, 4); /* Add border to each image */
+        }
+    </style>
+</head>
+<body>
+    <style>
+        body {
+          background-image: url('assign4bg.jpg');
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+    <h1 style="color:rgb(13, 255, 0)";><center> ELEMENTS OF LIFE </center></h1>
+    <h2 style="color:rgb(34, 213, 162)";><center> Click on the Element to Learn More </center></h2>
+    <div class="image-container">
+        <img src="fourelements.jpg" alt="Workplace" usemap="#workmap" width="400" height="387">
+        <map name="workmap">
+            <area shape="poly" coords="34,61,77,21,143,36,177,29,221,39,230,87,184,137,164,170,121,196,76,169,62,138,46,101" alt="Air" href="air.html">
+        <map name="workmap">
+          <area shape="rect" coords="257,0,495,246" alt="Fire" href="fire.html">
+          <map name="workmap">
+          <area shape="rect" coords="0,258,250,488" alt="Earth" href="earth.html">
+          <map name="workmap">
+          <area shape="circle" coords="372,359,90" alt="Water" href="water.html">
+        </map>
+    </div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+Before swapping:
+a = 10, b = 20
+After swapping using call by value:
+a = 10, b = 20
+After swapping using call by reference:
+a = 20, b = 10

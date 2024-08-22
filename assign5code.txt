@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Capital</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('assign5.jpg'); /* Add background image URL here */
+            background-size: cover;
+            background-position: center;
+        }
+        
+        h1 {
+            color: #f57d06;
+        }
+        
+        select {
+            padding: 10px;
+            font-size: 25px;
+            border: 5px solid #000000;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            height: 60px;
+            width: 250px;
+            text-align: center;
+        }
+        
+        #capital {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff0000;
+            margin-bottom: 20px;
+            text-decoration-thickness: 200px;
+            text-decoration: underline;
+        }
+
+        #capitalLink {
+            text-decoration: none;
+            color: #66ff00;
+            margin-left: 10px;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Select a Company:</h1>
+        <select id="companySelect" onchange="showCapital()">
+            <option value="apple" style="color: rgb(0, 0, 0);">Apple</option>
+            <option value="google" style="color: rgb(255, 0, 0);">Google</option>
+            <option value="amazon" style="color: rgb(213, 144, 17);">Amazon</option>
+            <option value="meta" style="color: rgb(25, 97, 178);">Meta</option>
+            <option value="microsoft" style="color: rgb(19, 176, 71);">Microsoft</option>
+        </select>
+        <div id="capital"></div>
+    </div>
+
+    <script>
+        function showCapital() {
+            var selectBox = document.getElementById("companySelect");
+            var selectedCompany = selectBox.options[selectBox.selectedIndex].text;
+
+            // Object containing the capital and URL for each company
+            var companyInfo = {
+                "apple": { "capital": "$2.647 Trillion", "url": "https://www.google.com/search?q=apple+stock&rlz=1C1CHBF_enIN1059IN1059&oq=apple+stock&gs_lcrp=EgZjaHJvbWUyDAgAEEUYORixAxiABDIKCAEQABixAxiABDIKCAIQABixAxiABDIKCAMQABixAxiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDIHCAgQABiABDIHCAkQABiABKgCALACAA&sourceid=chrome&ie=UTF-8" },
+                "google": { "capital": "$1.885 Trillion", "url": "https://www.google.com/search?q=google+stock&sca_esv=a793da27159ce01a&rlz=1C1CHBF_enIN1059IN1059&sxsrf=ACQVn0_TBG_aGlf5P-rs9btsVjzg9VJ5wg%3A1711878500913&ei=ZDEJZvKxN8anseMPiaG8oAk&ved=0ahUKEwjy88evnJ6FAxXGU2wGHYkQD5QQ4dUDCBA&uact=5&oq=google+stock&gs_lp=Egxnd3Mtd2l6LXNlcnAiDGdvb2dsZSBzdG9jazIGEAAYBxgeMgYQABgHGB4yBhAAGAcYHjIGEAAYBxgeMgYQABgHGB4yBhAAGAcYHjIFEAAYgAQyBhAAGAcYHjIGEAAYBxgeMgYQABgHGB5IlSRQmQ1Y5yFwA3gBkAEAmAGyAaABwgyqAQQwLjExuAEDyAEA-AEBmAIJoAKSB8ICChAAGEcY1gQYsAPCAg0QABiABBiKBRhDGLADwgIKEAAYgAQYigUYQ8ICDRAAGIAEGIoFGEMYsQPCAgsQABiABBiKBRiRAsICBxAjGLECGCfCAg4QABiABBiKBRiRAhixA8ICBxAAGIAEGAqYAwCIBgGQBgqSBwMzLjagB9JB&sclient=gws-wiz-serp" },
+                "amazon": { "capital": " $1.873 Trillion", "url": "https://www.google.com/search?q=amazon+stock&sca_esv=a793da27159ce01a&rlz=1C1CHBF_enIN1059IN1059&sxsrf=ACQVn0-GK-W7plTFoiuFJ7qDER67dn2BdA%3A1711878567824&ei=pzEJZt__Mf7i2roPsv6XmAo&ved=0ahUKEwif77vPnJ6FAxV-sVYBHTL_BaMQ4dUDCBA&uact=5&oq=amazon+stock&gs_lp=Egxnd3Mtd2l6LXNlcnAiDGFtYXpvbiBzdG9jazINEAAYgAQYigUYQxixAzINEAAYgAQYigUYQxixAzILEAAYgAQYsQMYgwEyBRAAGIAEMggQABiABBixAzIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAESJMOUABYmQtwAHgBkAEAmAHnAaABgwiqAQUwLjYuMbgBA8gBAPgBAZgCBKACpgTCAgoQABiABBiKBRhDwgIGEAAYBxgemAMAkgcDMC40oAfGKQ&sclient=gws-wiz-serp" },
+                "meta": { "capital": "$1.237 trillion", "url": "https://www.google.com/search?q=meta+stock&sca_esv=a793da27159ce01a&rlz=1C1CHBF_enIN1059IN1059&sxsrf=ACQVn0-w66v93rmr2ZxJ32s3040Au2Nyag%3A1711878610704&ei=0jEJZvDGKr6u2roPxdKDwAY&ved=0ahUKEwjw9_TjnJ6FAxU-l1YBHUXpAGgQ4dUDCBA&uact=5&oq=meta+stock&gs_lp=Egxnd3Mtd2l6LXNlcnAiCm1ldGEgc3RvY2syDRAAGIAEGIoFGEMYsQMyDRAAGIAEGIoFGEMYsQMyBRAAGIAEMgYQABgHGB4yCBAAGIAEGLEDMgUQABiABDIGEAAYBxgeMgUQABiABDIGEAAYBxgeMgUQABiABEjoFFC_BliLE3ABeAGQAQCYAZcBoAHBB6oBAzAuN7gBAcgBAPgBAZgCB6AC1ATCAgoQABhHGNYEGLADwgINEAAYgAQYigUYQxiwA8ICChAAGIAEGIoFGEPCAg0QABiABBiKBRhDGLLEDmAMAiAYBkAYKkgcDMy40oAeBLA&sclient=gws-wiz-serp" },
+                "microsoft": { "capital": "$3.126 Trillion", "url": "https://www.google.com/search?q=microsoft+stock&sca_esv=a793da27159ce01a&rlz=1C1CHBF_enIN1059IN1059&sxsrf=ACQVn0_XwIZ-twtC4yEbx2cJDrmYgw4gtw%3A1711878633798&ei=6TEJZq6iMJ_f2roPvf2GuAw&oq=mic+stock&gs_lp=Egxnd3Mtd2l6LXNlcnAiCW1pYyBzdG9jayoCCAAyBhAAGAcYHjIGEAAYBxgeMgwQLhgHGB4YxwEY0QMyBhAAGAcYHjIGEAAYBxgeMgYQABgHGB4yBhAAGAcYHjIGEAAYBxgeMgYQABgHGB4yBhAAGAcYHkjqJFCzBljWGXADeAGQAQCYAZcBoAHBB6oBAzAuN7gBAcgBAPgBAZgCB6AC1ATCAgoQABhHGNYEGLADwgINEAAYgAQYigUYQxiwA8ICChAAGIAEGIoFGEPCAg0QABiABBiKBRhDGLLEDmAMAiAYBkAYKkgcDMy40oAeBLA&sclient=gws-wiz-serp" }
+            };
+
+            // Display the capital and URL of the selected company
+            var capitalDiv = document.getElementById("capital");
+            capitalDiv.innerHTML = "Capital: " + companyInfo[selectedCompany.toLowerCase()].capital;
+            
+            var capitalLink = document.createElement("a");
+            capitalLink.href = companyInfo[selectedCompany.toLowerCase()].url;
+            capitalLink.innerText = "See Current Market Price";
+            capitalLink.id = "capitalLink";
+            capitalDiv.appendChild(capitalLink);
+        }
+    </script>
+</body>
+</html>
